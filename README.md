@@ -1,26 +1,26 @@
 # 🎵 A/B Testing: Spotify Targeted Campaign Strategy
 
-Proyek analisis A/B Testing berbasis data untuk mengevaluasi efektivitas kampanye promosi terpersonalisasi terhadap peningkatan **Payment Conversion Rate (CVR)** pengguna paket *Free* Spotify serta dampaknya terhadap **User Engagement (Duration Played)**.
+A data-driven A/B testing analysis project evaluating the effectiveness of personalized promotional campaigns on increasing the **Payment Conversion Rate (CVR)** of Spotify Free users, as well as their impact on **User Engagement (Duration Played)**.
 
 ---
 
 ## 📌 Executive Summary
 
-* **Masalah Utama**: Tingkat *drop-off* pada kelompok Control masih tinggi (30,3% pengguna *Free* keluar tanpa melakukan konversi pembayaran).
-* **Inisiatif Eksperimen**: Mengevaluasi kampanye promosi terpersonalisasi (banner diskon/uji coba khusus + rekomendasi konten yang relevan) pada kelompok Target.
-* **Hasil Utama**:
-  * **Success Metric (Payment CVR)**: Naik secara signifikan sebesar **+10.1%** (dari 69.7% menjadi 79.8%, p-value = 0.0000 < 0.05).
-  * **Guardrail Metric (Duration Played)**: Rata-rata durasi mendengarkan pengguna naik sebesar **+39.84 menit** (dari 120.07 menit menjadi 159.91 menit, p-value = 0.0000 < 0.05).
-* **Keputusan Bisnis**: **Full Rollout (100%)** kampanye terpersonalisasi ke seluruh pengguna paket *Free*.
+- **Core Problem**: High drop-off rate in the Control group (30.3% of Free users exited without completing a payment conversion).
+- **Experimental Initiative**: Evaluated a personalized promotional campaign (targeted discount/trial banners + relevant content recommendations) on the Target group.
+- **Key Findings**:
+  * **Success Metric (Payment CVR)**: Increased significantly by **+10.1%** (from 69.7% to 79.8%, p-value = 0.0000 < 0.05).
+  * **Guardrail Metric (Duration Played)**: Average user listening duration increased by **+39.84 minutes** (from 120.07 minutes to 159.91 minutes, p-value = 0.0000 < 0.05).
+- **Business Decision**: **Full Rollout (100%)** of the personalized campaign to all Free tier users.
 
 ---
 
 ## 🎯 Objectives & Assignment Scope
 
-1. **Eksperimen & Desain A/B Testing**: Merancang alur eksperimen, menentukan *Success Metric* dan *Guardrail Metric*, serta melakukan uji hipotesis statistik secara tepat.
-2. **Monitoring & Evaluasi**: Menganalisis kondisi *Before vs. After* dan memastikan tidak terjadi kanibalisasi pada metrik keterlibatan pengguna.
-3. **Rekomendasi Bisnis**: Memberikan rekomendasi keputusan strategis berbasis konklusi kuantitatif.
-4. **Pertanyaan Reflektif**: Menjelaskan urgensi detail perancangan sampel, penanganan kondisi *current* vs. inovasi, dan langkah pasca-implementasi.
+1. **A/B Testing Experiment & Design**: Designing the experiment flow, defining Success and Guardrail metrics, and performing precise statistical hypothesis testing.
+2. **Monitoring & Evaluation**: Analyzing Before vs. After conditions and ensuring no cannibalization occurs on user engagement metrics.
+3. **Business Recommendations**: Providing strategic decision recommendations backed by quantitative conclusions.
+4. **Reflective Questions**: Explaining the urgency of detailed sample design, handling current vs. innovation conditions, and post-implementation steps.
 
 ---
 
@@ -28,43 +28,41 @@ Proyek analisis A/B Testing berbasis data untuk mengevaluasi efektivitas kampany
 
 ```text
 .
-├── Assignment - spotify_campaign_data.csv   # Dataset A/B Testing (100,000 sampel)
+├── Assignment - spotify_campaign_data.csv    # A/B Testing Dataset (100,000 samples)
 ├── AB_Testing_Spotify_Campaign.ipynb         # Python Colab Notebook (Data Cleaning & Hypothesis Testing)
-├── A_B Testing Spotify Campaign.pptx         # Slide Presentasi & Visualisasi Storytelling
-└── README.md                                 # Dokumentasi Portofolio Data Analyst
+├── A_B Testing Spotify Campaign.pptx         # Presentation Slides & Storytelling Visualizations
+└── README.md                                 # Data Analyst Portfolio Documentation
 ```
-
----
 
 ## 🛠️ Tools & Technologies Used
 
 - **Python (Google Colaboratory)**: Data Manipulation (`pandas`, `numpy`) & Statistical Testing (`statsmodels`, `scipy`).
-- **Power BI / Slide Visuals**: Pembuatan grafik perbandingan dan visualisasi funnel performa kampanye.
-- **Statistik Terapan**: Two-Sample Proportion Z-Test & Independent Two-Sample T-Test.
+- **Power BI / Slide Visuals**: Comparative chart generation and campaign performance funnel visualization.
+- **Applied Statistics**: Two-Sample Proportion Z-Test & Independent Two-Sample T-Test.
 
 ---
 
 ## 📐 Experiment Design & Metrics Definition
 
 ### 1. Identify Change
-- **Kondisi Saat Ini (Control / Group A)**: Pengguna *Free* melihat iklan suara standar dan banner promosi umum tanpa penawaran khusus.
-- **Perubahan Diajukan (Target / Group B)**: Pengguna *Free* menerima penawaran diskon/uji coba yang dipersonalisasi serta rekomendasi konten yang disesuaikan.
+- **Current Condition (Control / Group A)**: Free users see standard audio ads and generic promotional banners without special offers.
+- **Proposed Change (Target / Group B)**: Free users receive personalized discount/trial offers along with customized content recommendations.
 
 ### 2. Hypothesis Definition
-> *"Menerapkan kampanye promosi khusus dan rekomendasi terpersonalisasi akan meningkatkan tingkat konversi pembayaran pengguna Free ke Premium karena penawaran yang relevan dapat mendorong engagement dan mengurangi rate user drop-off."*
+> *"Implementing targeted promotional campaigns and personalized recommendations will increase the payment conversion rate of Free users to Premium because relevant offers can drive engagement and reduce user drop-off rates."*
 
 ### 3. Key Metrics & Statistical Formulation
 
-| Kategori Metrik | Nama Metrik | Definisi Operasional | Uji Statistik | Formulasi Hipotesis |
+| Metric Category | Metric Name | Operational Definition | Statistical Test | Hypothesis Formulation |
 | :--- | :--- | :--- | :--- | :--- |
-| **Success Metric** | **Payment Conversion Rate (CVR)** | Persentase pengguna yang melakukan pembayaran (`Payment = Yes`) | Two-Sample Proportion Z-Test | `H0: CVR_Target <= CVR_Control`<br>`H1: CVR_Target > CVR_Control` |
-| **Guardrail Metric** | **Average Session Duration** | Rata-rata durasi waktu mendengarkan (`Duration Played` dalam menit) | Independent T-Test | `H0: Avg_Target <= Avg_Control`<br>`H1: Avg_Target > Avg_Control` |
+| **Success Metric** | **Payment Conversion Rate (CVR)** | Percentage of users who made a payment (`Payment = Yes`) | Two-Sample Proportion Z-Test | `H0: CVR_Target <= CVR_Control`<br>`H1: CVR_Target > CVR_Control` |
+| **Guardrail Metric** | **Average Session Duration** | Average listening time duration (`Duration Played` in minutes) | Independent T-Test | `H0: Avg_Target <= Avg_Control`<br>`H1: Avg_Target > Avg_Control` |
 
 ---
 
 ## 📊 Statistical Analysis & Results
 
-Uji statistik dilakukan terhadap 100.000 total populasi sampel ($N = 50.000$ per kelompok Control dan Target).
+Statistical tests were conducted on a total population sample of 100,000 ($N = 50,000$ per Control and Target group).
 
 ### 1. Success Metric: Payment Conversion Rate (CVR)
 - **Control CVR**: 69.7% (34,844 converted / 50,000 users)
@@ -72,51 +70,51 @@ Uji statistik dilakukan terhadap 100.000 total populasi sampel ($N = 50.000$ per
 - **Absolute Uplift**: +10.1% (+1,010 bps)
 - **Z-Statistic**: 36.8534
 - **P-value**: 0.0000 (p < 0.05)
-- **Konklusi**: **Tolak H0**. Terdapat peningkatan *Payment Conversion Rate* yang signifikan secara statistik pada kelompok Target.
+- **Conclusion**: **Reject H0**. There is a statistically significant increase in the Payment Conversion Rate for the Target group.
 
 ### 2. Guardrail Metric: Session Duration Played
-- **Control Mean Duration**: 120.07 menit
-- **Target Mean Duration**: 159.91 menit
-- **Absolute Uplift**: +39.84 menit (+33.2%)
+- **Control Mean Duration**: 120.07 minutes
+- **Target Mean Duration**: 159.91 minutes
+- **Absolute Uplift**: +39.84 minutes (+33.2%)
 - **P-value**: 0.0000 (p < 0.05)
-- **Konklusi**: **Tolak H0**. Peningkatan konversi pembayaran **TIDAK mengorbankan durasi sesi pengguna**. Sebaliknya, *engagement* pengguna meningkat secara signifikan.
+- **Conclusion**: **Reject H0**. The payment conversion increase **did not compromise user session duration**. Instead, user engagement increased significantly.
 
 ---
 
 ## 💡 Strategic Recommendations & Monitoring
 
-1. **Full Rollout Strategy**: Meluncurkan (*rollout*) fitur kampanye promosi terpersonalisasi dan sistem rekomendasi ke 100% pengguna *Free* Spotify.
+1. **Full Rollout Strategy**: Deploying and rolling out the personalized promotional campaign and recommendation system to 100% of Spotify Free users.
 2. **Monitoring Before vs. After**:
-   - Melakukan pemantauan CVR mingguan pasca-peluncuran penuh untuk memastikan tidak ada penurunan performa karena efek kecenderungan baru (*novelty effect*).
-   - Memantau indikator retensi jangka panjang (*30-day Retention Rate*) pada pengguna baru yang melakukan konversi ke Premium.
-3. **Optimisasi Lebih Lanjut**: Melakukan segmentasi audiens berbasis preferensi genre musik untuk membuat penawaran diskon yang lebih spesifik pada *cohort* pengguna berkonversi rendah.
+   - Conducting weekly post-full rollout CVR monitoring to ensure performance does not degrade due to novelty effects.
+   - Monitoring long-term retention indicators (**30-day Retention Rate**) for newly converted Premium users.
+3. **Further Optimization**: Segmenting audiences based on music genre preferences to tailor more specific discount offers to low-converting cohorts.
 
 ---
 
 ## 💭 Reflection Questions
 
-### 1. Mengapa perancangan detail eksperimen (durasi, pemilihan sampel, dll.) sangat krusial?
-Detail perancangan sangat krusial untuk menjaga kelayakan ilmiah eksperimen:
-- **Sampel**: Pemilihan sampel wajib acak (*random assignment*) agar bebas dari bias latar belakang (*confounding variables*).
-- **Ukuran Sampel (Sample Size)**: Menentukan sampel yang cukup memastikan kekuatan uji statistik (*statistical power*) memadai dalam mendeteksi perbedaan nyata (*Minimum Detectable Effect*).
-- **Durasi Eksperimen**: Menjalankan eksperimen dengan durasi yang sesuai mencegah bias musiman (*seasonality*) dan *novelty effect* (efek penasaran pengguna di awal kemunculan fitur baru).
+### 1. Why is detailed experiment design (duration, sample selection, etc.) crucial?
+Detailed design is critical to maintaining the scientific validity of the experiment:
+- **Sampling**: Random assignment is mandatory to eliminate background bias from confounding variables.
+- **Sample Size**: Ensuring a sufficient sample size guarantees adequate statistical power to detect real differences (Minimum Detectable Effect).
+- **Experiment Duration**: Running experiments for an appropriate duration prevents seasonal bias and novelty effects (user curiosity spikes at the initial introduction of a new feature).
 
-### 2. Apa yang harus dilakukan jika kondisi current ternyata lebih baik daripada kondisi inovasi?
-Jika inovasi menghasilkan performa lebih buruk (*Failed Experiment*):
-- **Gagal Tolak H0 / Rollback**: Membatalkan peluncuran variasi baru dan mempertahankan kondisi *current* (Control).
-- **Root Cause Analysis**: Melakukan analisis mendalam (*post-mortem analysis*) untuk memahami mengapa inovasi tidak berhasil (misalnya: pesan promosi dianggap mengganggu, kendala UI/UX, atau harga uji coba tidak menarik).
-- **Iterasi Hipotesis**: Memperbaiki rancangan kampanye berdasarkan *feedback* data, lalu menyiapkan hipotesis baru sebelum melakukan pengujian ulang.
+### 2. What should be done if the current condition outperforms the innovation?
+If the innovation results in poorer performance (*Failed Experiment*):
+- **Fail to Reject H0 / Rollback**: Cancel the rollout of the new variation and maintain the current condition (Control).
+- **Root Cause Analysis**: Conduct a deep-dive post-mortem analysis to understand why the innovation failed (e.g., promotional messages felt intrusive, UI/UX friction, or trial pricing lacked appeal).
+- **Hypothesis Iteration**: Refine the campaign design based on data feedback, then formulate a new hypothesis before re-testing.
 
-### 3. Jika rekomendasi sudah diimplementasikan, apa langkah selanjutnya?
-Setelah implementasi (*post-implementation step*):
-- **Continuous Guardrail Monitoring**: Memantau dampak jangka panjang terhadap ketersediaan server, *churn rate* paket Premium, dan *customer lifetime value* (CLV).
-- **Guard Against Cannibalization**: Memastikan promosi diskon tidak membuat pengguna yang sebenarnya bersedia membayar harga penuh beralih memilih paket diskon termurah (*margin erosion*).
-- **Mulai Siklus A/B Test Baru**: Mencari area optimisasi berikutnya (misal: pengujian variasi *copywriting* penawaran atau letak tombol *Call-to-Action*).
+### 3. Once recommendations are implemented, what are the next steps?
+Following implementation (*post-implementation steps*):
+- **Continuous Guardrail Monitoring**: Monitor long-term impacts on server capacity, Premium churn rates, and Customer Lifetime Value (CLV).
+- **Guard Against Cannibalization**: Ensure discount promotions do not cause users who were otherwise willing to pay full price to shift to cheaper discounted plans (*margin erosion*).
+- **Initiate New A/B Test Cycles**: Explore the next optimization areas (e.g., testing variations in offer copywriting or Call-to-Action button placement).
 
 ---
 
 ## 👤 Author
 
-- **Nama**: Muhammad Rizky Ginanjar
+- **Name**: Muhammad Rizky Ginanjar
 - **Role**: Data Analyst
 - **LinkedIn**: [Muhammad Rizky Ginanjar](https://www.linkedin.com/in/rizkyginan/)
